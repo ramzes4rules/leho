@@ -6,8 +6,8 @@ import (
 )
 
 type Leho struct {
-	Setting  any
-	FileName string
+	Setting  any    // Setting object
+	FileName string // Settings file
 }
 
 func (leho *Leho) WriteSetting() error {

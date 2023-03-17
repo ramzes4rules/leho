@@ -1,3 +1,3 @@
-module github/ramzes4rules/leho
+module github.com/ramzes4rules/leho
 
 go 1.20
