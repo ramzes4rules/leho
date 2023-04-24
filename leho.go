@@ -6,13 +6,15 @@ import (
 )
 
 type Leho struct {
-	Setting  any    // Setting object
+	//Setting  any    // Setting object
 	FileName string // Settings file
 }
 
-func (leho *Leho) WriteSetting() error {
+// WriteSetting save settings to file
+func (leho *Leho) WriteSetting(object any) error {
+
 	// Сериализуем данные
-	var response, err = json.MarshalIndent(leho.Setting, "", "\t")
+	var response, err = json.MarshalIndent(object, "", "\t")
 	if err != nil {
 		return err
 	}
@@ -38,16 +40,17 @@ func (leho *Leho) WriteSetting() error {
 	return nil
 }
 
-func (leho *Leho) ReadSetting() error {
+func (leho *Leho) ReadSetting(object any) error {
 
 	data, err := os.ReadFile(leho.FileName)
 	if err != nil {
 		return err
 	}
 
-	err = json.Unmarshal(data, &leho.Setting)
+	err = json.Unmarshal(data, &object)
 	if err != nil {
 		return err
 	}
+
 	return nil
 }
